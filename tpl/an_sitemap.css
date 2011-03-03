@@ -1,0 +1,96 @@
+/*
+// *********************************************
+// *    Plugin AN Site Map                     *
+// *        Template Layout                    *
+// *    Alex & Natty studio                    *
+// *        http://portal30.ru                 *
+// *                                           *
+// *            © Alex & Natty Studio  2010    *
+// *********************************************
+*/
+
+.an_sitemap_level_1{
+	margin-left :10px;
+}
+
+.an_sitemap_level_1:hover{
+}
+
+.an_sitemap_level_2{
+  margin-left :40px;
+}
+
+.an_sitemap_level_2:hover{
+}
+
+.an_sitemap_level_3{
+  margin-left :70px;
+}
+
+.an_sitemap_level_3:hover{
+
+}
+
+.an_sitemap_level_4{
+  margin-left :100px;
+}
+
+.an_sitemap_level_4:hover{
+
+}
+
+.an_sitemap_level_5{
+  margin-left :130px;
+}
+
+.an_sitemap_level_5:hover{
+
+}
+
+.an_sitemap_level_6{
+  margin-left :160px;
+}
+
+.an_sitemap_level_6:hover{
+
+}
+
+.an_sitemap_level_7{
+  margin-left :190px;
+}
+
+.an_sitemap_level_7:hover{
+
+}
+
+.an_sitemap_level_8{
+  margin-left :220px;
+}
+
+.an_sitemap_level_8:hover{
+
+}
+
+.an_sitemap_level_9{
+  margin-left :250px;
+}
+
+.an_sitemap_level_9:hover{
+
+}
+
+.an_sitemap_level_10{
+  margin-left :270px;
+}
+
+.an_sitemap_level_10:hover{
+
+}
+
+.an_sitemap_level_x{
+  margin-left :300px;
+}
+
+.an_sitemap_level_x:hover{
+
+}

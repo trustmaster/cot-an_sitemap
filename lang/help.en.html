@@ -1,0 +1,86 @@
+<p><strong>Main plugin Features:</strong></p>
+<ul>
+<li>Generates HTML, XML and TXT sitemaps</li>
+<li>Automatically adds XML sitemap index to «robots.txt» if it is writable</li>
+<li>Includes paginated pages in XML and TXT sitemaps</li>
+<li>Include/Exclude specific site areas in the sitemap (separate settings for each sitemap output format)</li>
+<li>Extensible via integrators, to include other pages into sitemap (for example contacts, shop, guestbook, etc.). Integrators are described below</li>
+<li>Additional sitemap links managed via Admin panel.</li>
+<li>HTML sitemap output is customizable with a TPL file.</li>
+<li>Guest permissions are considered when making the sitemap.</li>
+</ul>
+</p>
+<p>This tool generates 3 types of your Cotonti site maps.</p>
+<p><strong>HTML Sitemap:</strong><br />
+Located at: <strong>http://your_domain/plug.php?e=an_sitemap</strong>. Outputs your site structure tree. </p>
+<p style="text-align:justify"><strong>XML Sitemap:</strong><br />
+Site index is located at: <strong>http://your_domain/plug.php?r=an_sitemap&amp;out=xml_index</strong>. Outputs the list of available XML sitemap parts.<br />
+The XML sitemap itself is located at: <strong>http://your_domain/plug.php?r=an_sitemap&amp;out=xml</strong>. If there are more URLs than a preset limit, the XML sitemap is split into parts which are listed on sitemap index. XML Sitemap matches the Sitemaps protocol specification <a href="http://www.sitemaps.org">http://www.sitemaps.org</a>. <br />
+Webmasters can report available pages to search engines using this type of sitemaps. It is essentially important for correct indexing of your site if:</p>
+<ul style="text-align:justify">
+  <li>Your site has dynamic contents. </li>
+  <li>Your site has pages which a robot cannot detect while scanning, for example pages with multimedia AJAX content or images; pages which are located “many clicks away” from the main page.</li>
+  <li>Your site is quite new and a few external links point to it. (Search engines scan the Internet by following links. If just a few links point to your site, it is hard for a robot to find it.)</li>
+  <li>Your site contains a big archive of pages which are loosely linked to each other.</li>
+</ul>
+<p style="text-align:justify">This information lets the scanners supporting Sitemap protocol find all the URLs present in the Sitemap file and collect all the information about these URLs using metadata. Using the <a href="http://www.sitemaps.org/protocol.php">Sitemap protocol</a> does not guarantee that all your pages will be indexed by search engines, it just gives the crawlers a hint to scan your site better. </p>
+<p>It is supported by Google, Yandex, Yahoo!, Bing (Microsoft).</p>
+<p style="text-align:justify"><strong>TXT Sitemap:</strong><br />
+Located at: <strong>http://your_site/plug.php?r=an_sitemap&amp;out=txt</strong>. Outputs your site map in text/plain, listing 1 URL per line.</p>
+<p>&nbsp;</p>
+<p style="text-align:justify"><strong>Setting up</strong></p>
+<p>Some search engines such as Yandex require that the sitemap is located in site root, otherwise you may get a “Wrong URL (does not match Sitemap)” error. <a href="http://www.sitemaps.org/protocol.php#location">Read more here.</a>.</p>
+<p>To let the search engines know where the site map is, you need to add these lines to your <strong>robots.txt</strong> file:</p>
+<p class="code">
+Sitemap: <span style="text-align:justify">http://portal30.ru1/plug.php?r=an_sitemap&amp;out=xml_index</span><br />
+Sitemap: <span style="text-align:justify">http://portal30.ru1/plug.php?r=an_sitemap&amp;out=xml</span><br />
+</p>
+<p>&nbsp;</p>
+<p style="text-align:justify">Plugin settings allow you to specify number of URLs included in XML or TXT site map. Google allows not more than 50 000 URLs per XML file. If this limit is reached, the XML sitemap should be splitted into several files. You can also Include/Exclude site areas from the site map (pages, forums, users).</p>
+<p style="text-align:justify">Please pay attention for the <strong>&laquo;Field with page modification date&raquo;</strong> setting. <br />
+This field from the page database table is used to store last page modification date. By default &laquo;<strong>page_date</strong>&laquo; is used. But it is recommended to use an extra field, which would be overwritten every time the page is updated. If auto-updating for this field is turned on, it will be automatically updated by this plugin. If your site already exists, it is recommended to copy the data from page_date to this extra field right after its creation with such SQL query: &laquo;<strong>UPDATE sed_pages SET page_my_extrafield_name=page_date</strong>&raquo;.</p>
+<p style="text-align:justify">This value provides general information for search robots and makes an approximate assumption how often they should crawl the page. This value <strong>must</strong> be used for documents that change on every visit. This value must <strong>never</strong> be used for archive URLs.</p>
+<p style="text-align:justify">You can also specify the priority of your site area related to other areas of your site. The valid range is from 0.0 to 1. This value does not affect your site, it just lets the search robot know which pages of your site you think are more important and should be indexed first.<br /><br />
+By default all pages have priority of 0.5.</p>
+<p style="text-align:justify">&nbsp;</p>
+<p><strong>Structure settings</strong><br />
+Here you can exclude or include specific categories of your site in sitemap.</p>
+<p>&nbsp;</p>
+<p style="text-align:justify"><strong>Integrator settings</strong><br />
+Here you can turn on or off specific integrators in the site map.
+Some integrators can be downloaded on the plugin page.
+</p>
+<p style="text-align:justify">&nbsp;</p>
+<p style="text-align:justify"><strong>Making your own SiteMap Extensions</strong>  (Integrators)<br />
+ <em> Developer information. </em> <br />
+  Plugin root contains an example test integrator. You can make any plugin integrator out of ti. Integrator filename pattern is &laquo;&lt;code&gt;.an_sitemap.integrator.php&raquo;</p>
+<p style="text-align:justify">Integrator file should be located either in the an_sitemap plugin root or in the root of the plugin being integrated. You don't need to reinstall any plugins after adding an integrator file. It will be picked up automatically when generating a sitemap.</p>
+<p style="text-align:justify">Integrator file must contain a function called &laquo;&lt;code&gt;_sitemap($show_num = 0)&raquo;. The &laquo;code&raquo; should match the &laquo;code&raquo; in the file name. The parameter indicates whether number of items should be outputted in HTML sitemap. This function should return an array, which is included in sitemap generation.</p>
+<p>Required data:</p>
+<p class="code">// Integrator name<br />
+$out[&lt;code&gt;]['_name_'] = $L['plu']['test_name'];			  	<br />
+// Integrator description for for Admin panel <br />
+  $out[&lt;code&gt;]['_desc_'] = 'test Site Map Integrator for some plugin'; </p>
+<p>The &lt;code&gt; must match the code in file name.</p>
+<p>And then at least one record in this format:</p>
+<p class="code">// Array of items in the root, an example is given for 'contactus' plugin<br />
+  <br />
+  // HTML sitemap title <br />
+  $out['contactus']['ROOT']['1']['title'] = $L['sitemap']['title1'];<br />
+  // URL of included page <br />
+  $out['contactus']['ROOT']['1']['link'] =  $cfg['mainurl'].'/'.sed_url('plug', 'e=contactus');<br />
+  // Number of URLs in the entire list of included URLs (required)  <br />
+  $out['contactus']['ROOT'][_count_] =  1;<br />
+  // XML sitemap page priority (optional)<br />
+  $out['test']['ROOT']['1']['priority'] = 0.5 ;	<br />
+  // XML sitemap page update frequency (optional)<br />
+  $out['test']['ROOT']['1']['changefreq'] = 'monthly' ;	<br />
+  // XML sitemap last modification date (optional)<br />
+  $out['test']['ROOT']['1']['lastmod'] = date('Y-m-d\TH:i:s+00:00');<br />
+  // Including number of items if necessary<br />
+  // (displayed in braces near the link in HTML sitemap) <br />
+  //if ($show_num == 1) $out['test']['ROOT']['1']['count'] = &quot;1&quot;;</p>
+<p>If optional elements are not specified, default values will be used:<br />
+Priority = 0.5<br />
+Update frequency = 'monthly'<br />
+Date = today.</p>
