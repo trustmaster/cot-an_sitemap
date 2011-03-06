@@ -1791,7 +1791,7 @@ class an_sitemap {
 				$this->sitemap['users']['_name_'] = $L['an_sitemap']['users'];
 				$this->sitemap['users']['_count_'] = 1;
 				if ($this->show_num == 1){
-					$this->sitemap['users']['ROOT'][1]['count'] = cot_sql_rowcount($db_users);
+					$this->sitemap['users']['ROOT'][1]['count'] = $db->query("SELECT COUNT(*) FROM $db_users")->fetchColumn();
 				}
 			}
 			if ($this->enable_cache && !empty($this->cache_path)){
