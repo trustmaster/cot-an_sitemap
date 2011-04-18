@@ -23,6 +23,7 @@ $plugin_base_url = $cfg['mainurl'].getRelativeURL(dirname(__FILE__));
 $out['meta_desc'] = $L['an_sitemap']['plu_subtitle'];
 $out['meta_keywords'] = $L['an_sitemap']['plu_meta_keywords'];
 
+$out['subtitle'] = $L['an_sitemap']['plu_title'];
 
 $sitemap = new an_sitemap();	
 $sitemap->html_sitemap_out($t);
