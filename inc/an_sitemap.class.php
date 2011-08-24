@@ -399,7 +399,7 @@ class an_sitemap {
 		$header .= "// *                                           *\r\n";
 		$header .= "// *            © Alex & Natty Studio  2010    *\r\n";
 		$header .= "// *********************************************\r\n";
-		$header .= "if (!defined('SED_CODE')) { die('Wrong URL.'); }\r\n\r\n";
+		$header .= "if (!defined('COT_CODE')) { die('Wrong URL.'); }\r\n\r\n";
 		$footer = "\r\n\r\n?>";
 		
 		if ($this->configfile_writeable() == 0){
