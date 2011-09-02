@@ -1240,7 +1240,7 @@ class an_sitemap {
 		
 		while ($row = $sql->fetch()){
 			for ($k = 0; $k < (int)$row['sub_count']; $k++){
-				$param = (empty($row['page_alias'])) ? "id=".$row['page_id'] : "al=".$row['page_alias'];
+				$param = (empty($row['page_alias'])) ? "c=".$row['page_cat']."&id=".$row['page_id'] : "c=".$row['page_cat']."&al=".$row['page_alias'];
 				$indx = $row['page_id'];
 				if ($k > 0){
 					if ($map_type == 'html') break;
