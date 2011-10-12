@@ -12,7 +12,7 @@
 Code=an_sitemap
 Name=AN SiteMap
 Description=Sitemap Plugin for Cotonti CMF. Creates three kinds of site maps: HTML, XML and TXT
-Version=1.2.0
+Version=1.2.1
 Date=02-March-2011
 Author=Alex
 Copyright=&copy; 2010 http://portal30.ru (Alex-Natty studio)
