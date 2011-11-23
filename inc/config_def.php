@@ -1,4 +1,4 @@
-<?PHP
+<?php
 // *********************************************
 // *    Plugin AN Site Map                     *
 // *      Configuration File                   *

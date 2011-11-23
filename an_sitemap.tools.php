@@ -20,7 +20,7 @@ define(DS, DIRECTORY_SEPARATOR);										// Разделитель папок �
 require_once(cot_langfile('an_sitemap'));
 require_once cot_incfile('an_sitemap', 'plug');
 require_once cot_incfile('an_sitemap', 'plug', 'class');
-$plugin_base_url = $cfg['mainurl'].getRelativeURL(dirname(__FILE__));	// URL папки с плагином
+$plugin_base_url = $cfg['plugins_dir'].'/an_sitemap';	// URL папки с плагином
 $plugin_check_ver_page = "<a href=\"http://portal30.ru/page.php?al=cotonti_an_sitemap\" target=\"_blank\" >".$L['an_sitemap']['check_new_ver']."</a>";
 
 $config_url = cot_url('admin', "m=other&p=an_sitemap&task=config");
@@ -39,22 +39,22 @@ $sitemap = new an_sitemap();
 switch($task){
 	case 'config':
 		$tpl -> assign(array('SECTION' => $L['an_sitemap']['config']));
-		$sitemap -> show_configuration(&$tpl);
+		$sitemap -> show_configuration($tpl);
 		break;
 	
 	case 'structure':
 		$tpl -> assign(array('SECTION' => $L['an_sitemap']['srtucture']));
-		$sitemap -> show_structure(&$tpl);
+		$sitemap -> show_structure($tpl);
 		break;
 
         case 'addlinks':
 		$tpl -> assign(array('SECTION' => $L['an_sitemap']['add_links']));
-		$sitemap -> show_add_url(&$tpl);
+		$sitemap -> show_add_url($tpl);
 		break;
 		
 	case 'integrators':
 		$tpl -> assign(array('SECTION' => $L['an_sitemap']['integrators']));
-		$sitemap -> show_integrators(&$tpl);
+		$sitemap -> show_integrators($tpl);
 		break;
 	
 	case 'help':
